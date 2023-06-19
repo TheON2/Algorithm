@@ -4,13 +4,12 @@
 
 function solution(lottos, win_nums) {
   //받은 로또와 당첨 로또를 비교하여 일치하는 녀석들을 먼저 빼버리고
-  //반환된 녀석들의 숫자를 카운팅하며 등수 계산에 포함
-  //두개다 아닐때 둘중하나는 맞을때 둘다 맞았을때로 각각계산해
-  //min 과 max를 구하여 배열로 반환
+  //반환된 녀석들의 숫자를 카운팅하며 수중의 당첨번호 배열에 저장
+  //랜덤번호의 당첨숫자에 따른 최고등수,최소등수를 배열로 반환
   let randNum=0;
   const arr1=lottos.filter(a => win_nums.includes(a));//알고있는 수중 당첨숫자
   lottos.forEach((a)=>{if(a===0)randNum++})
-  console.log(arr1.length)
+  //랜덤숫자가 없으면서 당첨이 하나도 안됬을때  
   if(arr1.length===0 && randNum===0) return [6,6]
   if(7-arr1.length>=6) return [7-(arr1.length+randNum),6]
   else return [7-(arr1.length+randNum),7-arr1.length]
